@@ -8,7 +8,7 @@
 import scrapy
 
 
-class TutorialItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class JdPicture(scrapy.Item):
+    title = scrapy.Field()
+    image_urls = scrapy.Field()
+    catalog = scrapy.Field()

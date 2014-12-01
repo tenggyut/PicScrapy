@@ -21,15 +21,15 @@ class JsonLinesExportPipeline(object):
         return pipeline
 
     def spider_opened(self, spider):
-        file = open('%s_pics.json' % spider.name, 'w+b')
-        self.files[spider] = file
-        self.exporter = JsonLinesItemExporter(file, ensure_ascii=False)
+        out_file = open('%s_pics.json' % spider.name, 'a+')
+        self.files[spider] = out_file
+        self.exporter = JsonLinesItemExporter(out_file, ensure_ascii=False)
         self.exporter.start_exporting()
 
     def spider_closed(self, spider):
         self.exporter.finish_exporting()
-        file = self.files.pop(spider)
-        file.close()
+        out_file = self.files.pop(spider)
+        out_file.close()
 
     def process_item(self, item, spider):
         self.exporter.export_item(item)

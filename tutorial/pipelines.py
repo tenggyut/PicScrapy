@@ -32,5 +32,6 @@ class JsonLinesExportPipeline(object):
         out_file.close()
 
     def process_item(self, item, spider):
-        self.exporter.export_item(item)
+        if item.get("image_urls"):
+            self.exporter.export_item(item)
         return item

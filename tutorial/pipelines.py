@@ -21,7 +21,7 @@ class JsonLinesExportPipeline(object):
         return pipeline
 
     def spider_opened(self, spider):
-        out_file = open('%s_pics.json' % spider.name, 'a+')
+        out_file = open('%s_pics.json' % spider.name, 'a')
         self.files[spider] = out_file
         self.exporter = JsonLinesItemExporter(out_file, ensure_ascii=False)
         self.exporter.start_exporting()

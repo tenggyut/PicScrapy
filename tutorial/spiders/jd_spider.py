@@ -18,7 +18,7 @@ class JdSpider(CrawlSpider):
         Rule(LinkExtractor(allow=(
             'http://item\.jd\.com/.*\.html',
             'http://list\.jd\.com/.*\.html.*',
-            'http://channel\.jd\.com/.*\.html.*')), callback='parse_item', follow=True),
+            'http://channel\.jd\.com/.*\.html.*'), deny=()), callback='parse_item', follow=True),
     )
 
     def parse_item(self, response):

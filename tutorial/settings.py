@@ -14,7 +14,7 @@ SPIDER_MODULES = ['tutorial.spiders']
 NEWSPIDER_MODULE = 'tutorial.spiders'
 ITEM_PIPELINES = {'tutorial.pipelines.JsonLinesExportPipeline': 1}
 LOG_LEVEL = "INFO"
-LOG_FILE = "F:\\myWork\\spider.log"
+LOG_FILE = "spider.log"
 USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64)"
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'

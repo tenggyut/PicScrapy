@@ -1,17 +1,18 @@
 import cv2
-#import pdb
-#pdb.set_trace()#turn on the pdb prompt
+import urllib2
+import numpy as np
 
-#read image
-img = cv2.imread('D:\privacy\picture\little girl.jpg',cv2.IMREAD_COLOR)
-gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-cv2.imshow('origin',img);
 
-#SIFT
-detector = cv2.SIFT()
-keypoints = detector.detect(gray,None)
-img = cv2.drawKeypoints(gray,keypoints)
-#img = cv2.drawKeypoints(gray,keypoints,flags = cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-cv2.imshow('test',img);
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+url = "http://img11.360buyimg.com/n1/g13/M09/0B/05/rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg"
+
+req = urllib2.urlopen(url)
+arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+img = cv2.imdecode(arr, -1)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+sift = cv2.SIFT()
+kp, desc = sift.detectAndCompute(gray, None)
+print len(desc), len(desc[0])
+img = cv2.drawKeypoints(gray, kp)
+
+#cv2.imwrite('sift_keypoints.jpg', img)

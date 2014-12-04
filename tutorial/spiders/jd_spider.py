@@ -7,7 +7,11 @@ from scrapy.log import log
 
 class JdSpider(CrawlSpider):
     name = "jd_spider"
-    allowed_domains = ["jd.com"]
+    allowed_domains = [
+        "www.jd.com",
+        "channel.jd.com",
+        "list.jd.com",
+        "item.jd.com"]
     start_urls = [
         "http://www.jd.com"
     ]
